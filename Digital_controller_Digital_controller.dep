@@ -1,0 +1,83 @@
+Dependencies for Project 'Digital_controller', Target 'Digital_controller': (DO NOT MODIFY !)
+F (.\LPC2300.s)(0x521382B8)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips--pd "__UVISION_VERSION SETA 521"--list .\lpc2300.lst --xref -o .\lpc2300.o --depend .\lpc2300.d)
+F (.\main.c)(0x552F979E)(-c --cpu ARM7TDMI -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="521"-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+I (C:\Keil_v5\ARM\Inc\Philips\lpc24xx.h)(0x570F7B78)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x574EA096)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574EA096)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x574EA096)
+I (C:\Keil_v5\ARM\ARMCC\include\cstdlib)(0x574EA096)
+I (UART1.h)(0x545239F8)
+I (LPC24xx.h)(0x529DCE6A)
+I (Type.h)(0x5538C7C8)
+I (irq.h)(0x528A4360)
+I (SSP1_SPI.h)(0x52CC7510)
+I (SSP0_SPI.h)(0x52CC72F4)
+I (timer.h)(0x53FDD062)
+I (PLL.h)(0x52963600)
+I (Buffer.h)(0x52AB07D2)
+I (PID.h)(0x54BFCB3C)
+F (.\SSP0_SPI.c)(0x52CE4760)(-c --cpu ARM7TDMI -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="521"-o .\ssp0_spi.o --omf_browse .\ssp0_spi.crf --depend .\ssp0_spi.d)
+I (C:\Keil_v5\ARM\Inc\Philips\lpc23xx.h)(0x570F7B78)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x574EA096)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574EA096)
+I (type.h)(0x5538C7C8)
+I (SSP0_SPI.h)(0x52CC72F4)
+F (.\irq.c)(0x528A4364)(-c --cpu ARM7TDMI -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="521"-o .\irq.o --omf_browse .\irq.crf --depend .\irq.d)
+I (LPC24xx.h)(0x529DCE6A)
+I (Type.h)(0x5538C7C8)
+I (IRQ.h)(0x528A4360)
+F (.\Timer.c)(0x544F8F06)(-c --cpu ARM7TDMI -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="521"-o .\timer.o --omf_browse .\timer.crf --depend .\timer.d)
+I (LPC24xx.h)(0x529DCE6A)
+I (Type.h)(0x5538C7C8)
+I (IRQ.h)(0x528A4360)
+I (Timer.h)(0x53FDD062)
+I (PLL.h)(0x52963600)
+I (sys_buf.h)(0x53FF34BE)
+F (.\SSP1_SPI.c)(0x52CC752E)(-c --cpu ARM7TDMI -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="521"-o .\ssp1_spi.o --omf_browse .\ssp1_spi.crf --depend .\ssp1_spi.d)
+I (C:\Keil_v5\ARM\Inc\Philips\lpc23xx.h)(0x570F7B78)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x574EA096)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574EA096)
+I (type.h)(0x5538C7C8)
+I (SSP1_SPI.h)(0x52CC7510)
+F (.\PLL.c)(0x529635F8)(-c --cpu ARM7TDMI -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="521"-o .\pll.o --omf_browse .\pll.crf --depend .\pll.d)
+I (LPC24xx.h)(0x529DCE6A)
+I (Type.h)(0x5538C7C8)
+I (PLL.h)(0x52963600)
+F (.\PID.c)(0x54BFCEEE)(-c --cpu ARM7TDMI -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="521"-o .\pid.o --omf_browse .\pid.crf --depend .\pid.d)
+I (C:\Keil_v5\ARM\Inc\Philips\lpc23xx.h)(0x570F7B78)
+I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x574EA096)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x574EA096)
+I (PID.h)(0x54BFCB3C)
+I (type.h)(0x5538C7C8)
+F (.\Buffer.c)(0x5433F5B4)(-c --cpu ARM7TDMI -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="521"-o .\buffer.o --omf_browse .\buffer.crf --depend .\buffer.d)
+I (LPC24xx.h)(0x529DCE6A)
+I (Type.h)(0x5538C7C8)
+I (UART1.h)(0x545239F8)
+I (Buffer.h)(0x52AB07D2)
+F (.\UART1.c)(0x54BFDC1A)(-c --cpu ARM7TDMI -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="521"-o .\uart1.o --omf_browse .\uart1.crf --depend .\uart1.d)
+I (LPC24xx.h)(0x529DCE6A)
+I (Type.h)(0x5538C7C8)
+I (IRQ.h)(0x528A4360)
+I (PID.h)(0x54BFCB3C)
+I (PLL.h)(0x52963600)
+I (UART1.h)(0x545239F8)
+I (Buffer.h)(0x52AB07D2)
+I (sbuffer.h)(0x5437E250)
+F (.\sys_buf.c)(0x53FF31D2)(-c --cpu ARM7TDMI -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="521"-o .\sys_buf.o --omf_browse .\sys_buf.crf --depend .\sys_buf.d)
+I (sys_buf.h)(0x53FF34BE)
+I (type.h)(0x5538C7C8)
+F (.\sbuffer.c)(0x553933A8)(-c --cpu ARM7TDMI -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\Philips-D__UVISION_VERSION="521"-o .\sbuffer.o --omf_browse .\sbuffer.crf --depend .\sbuffer.d)
+I (sbuffer.h)(0x5437E250)
+I (Type.h)(0x5538C7C8)
+F (.\irq.h)(0x528A4360)()
+F (.\Type.h)(0x5538C7C8)()
+F (.\Timer.h)(0x53FDD062)()
+F (.\SSP1_SPI.h)(0x52CC7510)()
+F (.\PLL.h)(0x52963600)()
+F (.\SSP0_SPI.h)(0x52CC72F4)()
+F (.\LPC24xx.h)(0x529DCE6A)()
+F (.\PID.h)(0x54BFCB3C)()
+F (.\UART1.h)(0x545239F8)()
+F (.\Buffer.h)(0x52AB07D2)()
+F (.\sys_buf.h)(0x53FF34BE)()
+F (.\sbuffer.h)(0x5437E250)()

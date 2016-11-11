@@ -1,0 +1,16 @@
+.\main.o: main.c
+.\main.o: C:\Keil_v5\ARM\Inc\Philips\lpc24xx.h
+.\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstdlib
+.\main.o: UART1.h
+.\main.o: LPC24xx.h
+.\main.o: Type.h
+.\main.o: irq.h
+.\main.o: SSP1_SPI.h
+.\main.o: SSP0_SPI.h
+.\main.o: timer.h
+.\main.o: PLL.h
+.\main.o: Buffer.h
+.\main.o: PID.h

@@ -1,0 +1,149 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.21.1.0
+Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Piotr Cielecki, Wroclaw University of Science i Technology, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.21a
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 3 (build 300)
+Assembler:       Armasm.exe V5.06 update 3 (build 300)
+Linker/Locator:  ArmLink.exe V5.06 update 3 (build 300)
+Library Manager: ArmAr.exe V5.06 update 3 (build 300)
+Hex Converter:   FromElf.exe V5.06 update 3 (build 300)
+CPU DLL:         SARM.DLL V5.21a
+Dialog DLL:      DARMP.DLL V1.52.0.0
+Target DLL:      Segger\JLTAgdi.dll V1.60.0.0
+Dialog DLL:      TARMP.DLL V1.52.0.0
+ 
+<h2>Project:</h2>
+C:\Users\Piotr\Desktop\PiotrCielecki\PiotrCielecki\Digital_controller\Digital_controller.uvproj
+Project File Date:  11/11/2016
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'Digital_controller'
+assembling LPC2300.s...
+creating preprocessor file for main.c...
+main.c(236): warning:  #1-D: last line of file ends without a newline
+  //roznica ofsetow ukladow wejsciowych daje +340
+main.c: 1 warning, 0 errors
+creating preprocessor file for SSP0_SPI.c...
+compiling main.c...
+UART1.h(92): warning:  #1295-D: Deprecated declaration SendDataFree - give arg types
+  int SendDataFree();
+UART1.h(93): warning:  #1295-D: Deprecated declaration ReadDataFree - give arg types
+  int ReadDataFree();
+main.c(122): warning:  #167-D: argument of type "volatile PIDSTRUCT *" is incompatible with parameter of type "PIDSTRUCT *"
+  		DACbuf=PID(ADCbuf,&PIDStruct,rnd);
+main.c(79): warning:  #177-D: variable "ornd" was declared but never referenced
+  		SWORD ornd;
+main.c(147): warning:  #177-D: variable "sstatus" was declared but never referenced
+  	int rstatus=0,sstatus=0;
+main.c(148): warning:  #177-D: variable "cnt" was declared but never referenced
+  	int cnt=0;
+main.c(236): warning:  #1-D: last line of file ends without a newline
+  //roznica ofsetow ukladow wejsciowych daje +340
+main.c: 7 warnings, 0 errors
+creating preprocessor file for irq.c...
+compiling SSP0_SPI.c...
+creating preprocessor file for Timer.c...
+sys_buf.h(12): warning:  #1-D: last line of file ends without a newline
+  #endif
+Timer.c: 1 warning, 0 errors
+compiling irq.c...
+creating preprocessor file for SSP1_SPI.c...
+compiling Timer.c...
+sys_buf.h(12): warning:  #1-D: last line of file ends without a newline
+  #endif
+Timer.c: 1 warning, 0 errors
+creating preprocessor file for PLL.c...
+compiling SSP1_SPI.c...
+compiling PLL.c...
+creating preprocessor file for PID.c...
+creating preprocessor file for Buffer.c...
+compiling PID.c...
+creating preprocessor file for UART1.c...
+compiling Buffer.c...
+UART1.h(92): warning:  #1295-D: Deprecated declaration SendDataFree - give arg types
+  int SendDataFree();
+UART1.h(93): warning:  #1295-D: Deprecated declaration ReadDataFree - give arg types
+  int ReadDataFree();
+Buffer.c: 2 warnings, 0 errors
+creating preprocessor file for sys_buf.c...
+sys_buf.h(12): warning:  #1-D: last line of file ends without a newline
+  #endif
+sys_buf.c: 1 warning, 0 errors
+compiling UART1.c...
+UART1.h(92): warning:  #1295-D: Deprecated declaration SendDataFree - give arg types
+  int SendDataFree();
+UART1.h(93): warning:  #1295-D: Deprecated declaration ReadDataFree - give arg types
+  int ReadDataFree();
+UART1.c(61): warning:  #167-D: argument of type "volatile BYTE *" is incompatible with parameter of type "BYTE *"
+  						WriteBufferNOut (Buff,9);
+UART1.c(67): warning:  #167-D: argument of type "volatile BYTE *" is incompatible with parameter of type "BYTE *"
+  						WriteBufferNOut (Buff,3);
+UART1.c(85): warning:  #167-D: argument of type "volatile BYTE *" is incompatible with parameter of type "BYTE *"
+  						WriteBufferNOut (Buff,3);
+UART1.c(90): warning:  #167-D: argument of type "volatile BYTE *" is incompatible with parameter of type "BYTE *"
+  						WriteBufferNOut (Buff,3);
+UART1.c(101): warning:  #167-D: argument of type "volatile BYTE *" is incompatible with parameter of type "BYTE *"
+  						WriteBufferNOut (Buff,6);
+UART1.c(166): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  		put_sbuffer(&UART_BUF_IN,data[0]);		
+UART1.c(179): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  		cnt=read_sbuffer(&UART_BUF_OUT,data,
+UFSIZE);
+UART1.c(224): warning:  #167-D: argument of type "volatile BYTE *" is incompatible with parameter of type "BYTE *"
+  	UART_BUF_OUT=create_sbuffer(_UART_BUF_OUT,
+ART_BUF_SIZE);
+UART1.c(225): warning:  #167-D: argument of type "volatile BYTE *" is incompatible with parameter of type "BYTE *"
+  	UART_BUF_IN=create_sbuffer(_UART_BUF_IN,
+ART_BUF_SIZE);
+UART1.c(400): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  		written=write_sbuffer(&UART_BUF_OUT,tab,size);
+UART1.c(404): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  			if(!get_sbuffer(&UART_BUF_OUT,&data))
+UART1.c(406): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  			if(!get_sbuffer(&UART_BUF_OUT,&data))
+UART1.c(408): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  			if(!get_sbuffer(&UART_BUF_OUT,&data))
+UART1.c(398): warning:  #177-D: variable "i" was declared but never referenced
+  	int i=0;
+UART1.c(428): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  		written=write_sbuffer(&UART_BUF_OUT,sendDataTab,sendDataSize);
+UART1.c(432): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  			if(sbuffer_len(&UART_BUF_OUT)>2)
+UART1.c(435): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  				read_sbuffer(&UART_BUF_OUT,data,3);
+UART1.c(441): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  				read=read_sbuffer(&UART_BUF_OUT,data,2);
+UART1.c(461): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  		read=read_sbuffer(&UART_BUF_IN,tab,size);
+UART1.c(477): warning:  #167-D: argument of type "volatile SBUFFER *" is incompatible with parameter of type "SBUFFER *"
+  		read=read_sbuffer(&UART_BUF_IN,readDataTab,readDataSize);
+UART1.c: 22 warnings, 0 errors
+creating preprocessor file for sbuffer.c...
+sbuffer.c(74): warning:  #1-D: last line of file ends without a newline
+  }
+sbuffer.c: 1 warning, 0 errors
+compiling sys_buf.c...
+sys_buf.h(12): warning:  #1-D: last line of file ends without a newline
+  #endif
+sys_buf.c: 1 warning, 0 errors
+compiling sbuffer.c...
+sbuffer.c(74): warning:  #1-D: last line of file ends without a newline
+  }
+sbuffer.c: 1 warning, 0 errors
+linking...
+Program Size: Code=11476 RO-data=32 RW-data=148 ZI-data=16012  
+FromELF: creating hex file...
+".\Digital_controller.axf" - 0 Error(s), 38 Warning(s).
+Build Time Elapsed:  00:00:06
+</pre>
+</body>
+</html>

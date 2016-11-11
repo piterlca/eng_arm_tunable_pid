@@ -1,0 +1,9 @@
+.\uart1.o: UART1.c
+.\uart1.o: LPC24xx.h
+.\uart1.o: Type.h
+.\uart1.o: IRQ.h
+.\uart1.o: PID.h
+.\uart1.o: PLL.h
+.\uart1.o: UART1.h
+.\uart1.o: Buffer.h
+.\uart1.o: sbuffer.h

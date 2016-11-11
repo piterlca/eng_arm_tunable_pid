@@ -1,0 +1,17 @@
+--cpu ARM7TDMI
+".\lpc2300.o"
+".\main.o"
+".\ssp0_spi.o"
+".\irq.o"
+".\timer.o"
+".\ssp1_spi.o"
+".\pll.o"
+".\pid.o"
+".\buffer.o"
+".\uart1.o"
+".\sys_buf.o"
+".\sbuffer.o"
+--library_type=microlib --strict --scatter ".\Digital_controller.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Digital_controller.map" -o .\Digital_controller.axf

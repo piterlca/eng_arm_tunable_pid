@@ -16,7 +16,7 @@
 #include "timer.h"
 #include "Buffer.h"
 #include "PID.h"
-#include "zn_relay.h"
+
 
 
 
@@ -52,7 +52,6 @@ typedef __packed struct{BYTE code; SWORD in; WORD out;} DATASTRUCT;
 
 int i;
 volatile PIDSTRUCT tPIDStruct,PIDStruct;
-volatile zn_relay_h zn_relay;
 volatile WORD NumberOfSamples=0,tNumberOfSamples=0;
 volatile BYTE nextM=0;
 volatile BYTE synNOS=1;
@@ -123,21 +122,12 @@ void pid_irq(void) __irq
 			modifier=0;
 		}
 		
-		DACbuf=(
-				b_PID_tuned? 
-				
+		DACbuf=
 				PID(
 						ADCbuf,
 						&PIDStruct,
 						rnd
-				) : 
-				relay(
-						ADCbuf,
-						rnd,
-						zn_relay,
-						&PIDStruct
-				)
-		);
+				) ; 
 		
 		DACSPI(DACbuf);
 		if(synNOS==1 && tNumberOfSamples==sample_cnt)
@@ -169,12 +159,7 @@ int main (void)
     PIDStruct.ki=25543; PIDStruct.kd=0; PIDStruct.kp=0;
 	PIDStruct.dkp=31; PIDStruct.dkd=31; PIDStruct.dki=17;PIDStruct.sign=1;
 	
-	relay_init(
-		0x7fff >> 16, 
-		0, 
-		zn_relay
-	);
-	
+
 	PllInit();	   
 	SSP1Init();
 	SSP0Init();

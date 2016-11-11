@@ -16,6 +16,7 @@
 #include "timer.h"
 #include "Buffer.h"
 #include "PID.h"
+#include "zn_relay.h"
 
 
 
@@ -51,6 +52,7 @@ typedef __packed struct{BYTE code; SWORD in; WORD out;} DATASTRUCT;
 
 int i;
 volatile PIDSTRUCT tPIDStruct,PIDStruct;
+volatile zn_relay_h zn_relay;
 volatile WORD NumberOfSamples=0,tNumberOfSamples=0;
 volatile BYTE nextM=0;
 volatile BYTE synNOS=1;
@@ -68,6 +70,7 @@ volatile BYTE tModOn=0;
 volatile BYTE synMod=0;
 DATASTRUCT data[1024];
 int sample_cnt=0;
+unsigned b_PID_tuned = 0;
 
 void pid_irq(void) __irq
 {
@@ -119,7 +122,23 @@ void pid_irq(void) __irq
 			counter=0;
 			modifier=0;
 		}
-		DACbuf=PID(ADCbuf,&PIDStruct,rnd);
+		
+		DACbuf=(
+				b_PID_tuned? 
+				
+				PID(
+						ADCbuf,
+						&PIDStruct,
+						rnd
+				) : 
+				relay(
+						ADCbuf,
+						rnd,
+						zn_relay,
+						&PIDStruct
+				)
+		);
+		
 		DACSPI(DACbuf);
 		if(synNOS==1 && tNumberOfSamples==sample_cnt)
 		{
@@ -149,6 +168,13 @@ int main (void)
 	BYTE ppp[11];
     PIDStruct.ki=25543; PIDStruct.kd=0; PIDStruct.kp=0;
 	PIDStruct.dkp=31; PIDStruct.dkd=31; PIDStruct.dki=17;PIDStruct.sign=1;
+	
+	relay_init(
+		0x7fff >> 16, 
+		0, 
+		zn_relay
+	);
+	
 	PllInit();	   
 	SSP1Init();
 	SSP0Init();

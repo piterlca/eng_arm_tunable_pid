@@ -6,10 +6,11 @@
 #include "type.h"
 #include "PID.h"
 #include "zn_relay.h"
+#include "zn_relay_pvt.h"
 
 enum period_calculation_states{HOLD, OBSERVATION, HIT_IN_PHASE, HIT_COUNTERPHASE, SECOND_HIT_IN_PHASE, VERIFY, DONE};
 
-struct zn_relay_s
+typedef struct zn_relay_s
 {
 	SWORD 		m_in_hysteresis;
 	SWORD 		m_out_amplitude;	
@@ -20,16 +21,19 @@ struct zn_relay_s
 	WORD			m_in_amplitude;
 	WORD			m_period_in_samples;
 	WORD			m_n_samples_processed;
+	WORD			m_ultimate_gain;
 	
 	BOOL			m_b_is_tuned;
+	enum ctrlr_type
+						m_ctrlr_type;
 	
 	enum period_calculation_states 
 						m_pcs;
 	
-};
+}zn_relay_s;
 
 void
-zn_relay_init(
+zn_init(
 	WORD 				relay_output_amplitude,
 	WORD 				relay_input_hysteresis,
 	zn_relay_h	zn_relay
@@ -48,29 +52,50 @@ zn_relay(
 	zn_relay_h 		zn_relay
 )
 {
+	zn_relay_s* rel=(zn_relay_s*)zn_relay;
+	
+	calculate_amplitude(
+		input, 
+		zn_relay
+	);
+	
+	calculate_period(
+		input,
+		zn_relay
+	);
+	
+	++(rel->m_n_samples_processed);
+
+	return generate_relay(
+					input,
+					output_offset,
+					rel
+				);
+}
+
+static WORD
+generate_relay(
+	SWORD 			input,
+	SDWORD 			output_offset,
+	zn_relay_s* rel
+)
+{
 	WORD output;
-	struct zn_relay_s* rel=(struct zn_relay_s*)zn_relay;
 	
-	if				(input < output_offset + rel->m_in_hysteresis)
-	{
+	if			(input < output_offset + rel->m_in_hysteresis)
 		output = output_offset + rel->m_out_amplitude;
-	}	
-	else if 	(input > output_offset + rel->m_in_hysteresis)
-	{
-		output = output_offset - rel->m_out_amplitude;
-	}	
-	else
-	{
-		output = rel->m_last_output;
-	}
 	
-	++rel->m_n_samples_processed;
+	else if (input > output_offset + rel->m_in_hysteresis)
+		output = output_offset - rel->m_out_amplitude;
+	
+	else
+		output = rel->m_last_output;
 	
 	return output;
 }
 
 void
-zn_calculate_amplitude(
+calculate_amplitude(
 	SWORD 			input,
 	zn_relay_h 	relay
 )
@@ -82,28 +107,26 @@ zn_calculate_amplitude(
 	
 	if(input > rel->m_in_max)
 		rel->m_in_max = input;
-	
 	else if(input < rel->m_in_min)
 		rel->m_in_min = input;
-	
 	
 	if(rel->m_n_samples_processed  > MIN_PERIODS_TO_CALCULATE_AMPLITUDE * rel->m_period_in_samples)
 	{
 		rel->m_in_amplitude = (rel->m_in_max - rel->m_in_min) >> 1;
 		
 		rel->m_b_is_tuned = 1;
+		
+		rel->m_ultimate_gain = 4*rel->m_out_amplitude /(PI*rel->m_in_amplitude);
 	}
 }
 
-
-
 #define DUMMYVAL 1
 #define HYSTERESIS_FRAME(in, centerval) (		in <= centerval + DELTA_AMPLITUDE			\
-																						&& 	in >= centerval - DELTA_AMPLITUDE	)
+																				&& 	in >= centerval - DELTA_AMPLITUDE	)
 
 void
-zn_calculate_period(
-	SWORD input,
+calculate_period(
+	SWORD 			input,
 	zn_relay_h 	relay
 )
 {	
@@ -127,12 +150,12 @@ zn_calculate_period(
 		case OBSERVATION:
 			if(	HYSTERESIS_FRAME(input, observed_in_val)	)	
 			{
-							if(0 == t0)
-							rel->m_pcs = HIT_IN_PHASE;
-						else if(0 == t1)
-							rel->m_pcs = HIT_COUNTERPHASE;
-						else
-							rel->m_pcs = SECOND_HIT_IN_PHASE;
+				if(0 == t0)
+					rel->m_pcs = HIT_IN_PHASE;
+				else if(0 == t1)
+					rel->m_pcs = HIT_COUNTERPHASE;
+				else
+					rel->m_pcs = SECOND_HIT_IN_PHASE;
 					}	
 			break;
 		
@@ -162,4 +185,30 @@ zn_calculate_period(
 		default:
 			break;
 	}
+}
+
+WORD
+zn_get_p(
+	zn_relay_h 	zn_relay
+)
+{
+	return 0;
+}
+
+WORD
+zn_get_i(
+	zn_relay_h 	zn_relay
+)
+{
+	return 0;
+}
+
+BOOL
+zn_is_tuner_ready(
+	zn_relay_h zn_relay
+)
+{
+	struct zn_relay_s* rel = (struct zn_relay_s*)zn_relay;
+	
+	return rel->m_b_is_tuned;
 }

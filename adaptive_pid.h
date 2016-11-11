@@ -1,12 +1,13 @@
 #ifndef _ADAPTIVE_PID_H_
 #define _ADAPTIVE_PID_H_
 
-struct s_adaptive_pid;
-typedef struct s_adaptive_pid* adaptive_pid_h;
+struct adaptive_pid_s;
+typedef struct adaptive_pid_s* adaptive_pid_h;
+
+enum ctrlr_type {PID_P, PID_PI, PID_PID};
 
 void
-adaptive_pid_init(
-void);
+adaptive_pid_init(void);
 
 WORD 
 adaptive_pid(
@@ -14,12 +15,5 @@ adaptive_pid(
 	SDWORD offset,
 	adaptive_pid_h h_adaptive_pid
 );
-
-void
-zn_calculate_period(
-void);
 		
-void
-zn_calculate_amplitude(void);
-
 #endif
